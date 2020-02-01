@@ -9,11 +9,11 @@ public class RotateCamera : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKeyDown("a"))
+        if (Input.GetKeyDown("left"))
         {
             transform.RotateAround(Point, Axis, 45);
         }
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKeyDown("right"))
         {
             transform.RotateAround(Point, Axis, -45);
         }
