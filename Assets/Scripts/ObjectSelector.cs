@@ -8,7 +8,7 @@ public class ObjectSelector : MonoBehaviour
     public bool isSelected = false;
     Rigidbody rb;
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetMouseButtonDown(0)) // LMB
         {
@@ -26,16 +26,17 @@ public class ObjectSelector : MonoBehaviour
                         //moveBody(rb);
                     }
                 }
-                else
-                {
-                    isSelected = false;
-                }
+            }
+            else
+            {
+                isSelected = false;
             }
         }
 
         if (isSelected && rb != null)
         {
-            moveBody(rb);
+            //moveBody(rb);
+            moveBody();
         }
     }
 
@@ -45,16 +46,50 @@ public class ObjectSelector : MonoBehaviour
         print(go.name);
     }
 
+    private void moveBody()
+    {
+        // Z axis
+        if (Input.GetKeyDown("q"))
+        {
+            transform.Translate(0, 0, force);
+        }
+        if (Input.GetKeyDown("e"))
+        {
+            transform.Translate(0, 0, -force);
+        }
+
+        // Y axis
+        if (Input.GetKeyDown("w"))
+        {
+            transform.Translate(0, force, 0);
+        }
+        if (Input.GetKeyDown("s"))
+        {
+            transform.Translate(0, -force, 0);
+        }
+
+        // X axis
+        if (Input.GetKeyDown("d"))
+        {
+            transform.Translate(force, 0, 0);
+        }
+        if (Input.GetKeyDown("a"))
+        {
+            transform.Translate(-force, 0, 0);
+        }
+    }
+    /*
     private void moveBody(Rigidbody rig)
     {
         // Z axis
         if (Input.GetKeyDown("q"))
         {
-            rig.AddForce(transform.forward * force, ForceMode.Impulse);
+            //rig.AddForce(transform.forward * force, ForceMode.Impulse);
+
         }
         if (Input.GetKeyDown("a"))
         {
-            rig.AddForce(-transform.forward * force, ForceMode.Impulse);
+            //rig.AddForce(-transform.forward * force, ForceMode.Impulse);
         }
 
         // Y axis
@@ -76,5 +111,5 @@ public class ObjectSelector : MonoBehaviour
         {
             rig.AddForce(-transform.right * force, ForceMode.Impulse);
         }
-    }
+    }*/
 }
