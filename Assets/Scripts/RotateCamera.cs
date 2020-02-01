@@ -7,7 +7,7 @@ public class RotateCamera : MonoBehaviour
     private Vector3 Point = Vector3.zero;
     public Vector3 Axis = Vector3.up;
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown("left"))
         {

@@ -36,18 +36,18 @@ public class ObjectSelector : MonoBehaviour
                     {
                         rend.material.shader = shader1;
                         rend = hit.transform.GetComponent<Renderer>();
-                        isSelected = true;
+                        rb.isSelected = true;
                     }
                     else
                     {
                         rend.material.shader = shader1;
-                        isSelected = false;
+                        rb.isSelected = false;
                     }
                 }
             }
         }
 
-        if (isSelected)
+        if (rb.isSelected)
         {
             rend.material.shader = shader2;
             moveBody(rb);
