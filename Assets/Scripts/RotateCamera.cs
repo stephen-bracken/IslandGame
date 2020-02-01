@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class RotateCamera : MonoBehaviour
 {
-    private Vector3 point = new Vector3(0.0f, 0.0f, 0.0f);
-    private float speed = 100.0f;
+    private Vector3 Point = Vector3.zero;
+    private Vector3 Axis = Vector3.up;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetKeyDown("a"))
+        if (Input.GetKeyDown("left"))
         {
-            transform.RotateAround(point, new Vector3(0.0f, 1.0f, 0.0f), 45);
+            transform.RotateAround(Point, Axis, 45);
         }
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKeyDown("right"))
         {
-            transform.RotateAround(point, new Vector3(0.0f, 1.0f, 0.0f), -45);
+            transform.RotateAround(Point, Axis, -45);
         }
     }
 }
