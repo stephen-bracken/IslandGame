@@ -7,6 +7,16 @@ public class ObjectSelector : MonoBehaviour
     public float force = 5.0f;
     public bool isSelected = false;
     Rigidbody rb;
+    Shader shader1;
+    Shader shader2;
+    Renderer rend;
+
+    void Start()
+    {
+        rend = GetComponent<Renderer>();
+        shader1 = Shader.Find("Universal Render Pipeline/Lit");
+        shader2 = Shader.Find("Shader Graphs/Glow");
+    }
 
     void Update()
     {
@@ -23,7 +33,6 @@ public class ObjectSelector : MonoBehaviour
                     if (rb = hit.transform.GetComponent<Rigidbody>())
                     {
                         isSelected = true;
-                        //moveBody(rb);
                     }
                 }
             }
@@ -35,12 +44,16 @@ public class ObjectSelector : MonoBehaviour
 
         if (isSelected && rb != null)
         {
-            //moveBody(rb);
+            rend.material.shader = shader2;
             moveBody();
+        }
+        else
+        {
+            rend.material.shader = shader1;
         }
     }
 
-    
+
     private void PrintName(GameObject go)
     {
         print(go.name);
@@ -78,38 +91,4 @@ public class ObjectSelector : MonoBehaviour
             transform.Translate(-force, 0, 0);
         }
     }
-    /*
-    private void moveBody(Rigidbody rig)
-    {
-        // Z axis
-        if (Input.GetKeyDown("q"))
-        {
-            //rig.AddForce(transform.forward * force, ForceMode.Impulse);
-
-        }
-        if (Input.GetKeyDown("a"))
-        {
-            //rig.AddForce(-transform.forward * force, ForceMode.Impulse);
-        }
-
-        // Y axis
-        if (Input.GetKeyDown("w"))
-        {
-            rig.AddForce(transform.up * force, ForceMode.Impulse);
-        }
-        if (Input.GetKeyDown("s"))
-        {
-            rig.AddForce(-transform.up * force, ForceMode.Impulse);
-        }
-
-        // X axis
-        if (Input.GetKeyDown("d"))
-        {
-            rig.AddForce(transform.right * force, ForceMode.Impulse);
-        }
-        if (Input.GetKeyDown("e"))
-        {
-            rig.AddForce(-transform.right * force, ForceMode.Impulse);
-        }
-    }*/
 }
