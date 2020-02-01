@@ -7,8 +7,18 @@ public class ObjectSelector : MonoBehaviour
     public float force = 5.0f;
     public bool isSelected = false;
     Rigidbody rb;
+    Shader shader1;
+    Shader shader2;
+    Renderer rend;
 
-    void FixedUpdate()
+    void Start()
+    {
+        rend = GetComponent<Renderer>();
+        shader1 = Shader.Find("Universal Render Pipeline/Lit");
+        shader2 = Shader.Find("Shader Graphs/Glow");
+    }
+
+    void Update()
     {
         if (Input.GetMouseButtonDown(0)) // LMB
         {
@@ -23,58 +33,62 @@ public class ObjectSelector : MonoBehaviour
                     if (rb = hit.transform.GetComponent<Rigidbody>())
                     {
                         isSelected = true;
-                        //moveBody(rb);
                     }
                 }
-                else
-                {
-                    isSelected = false;
-                }
+            }
+            else
+            {
+                isSelected = false;
             }
         }
 
         if (isSelected && rb != null)
         {
-            moveBody(rb);
+            rend.material.shader = shader2;
+            moveBody();
+        }
+        else
+        {
+            rend.material.shader = shader1;
         }
     }
 
-    
+
     private void PrintName(GameObject go)
     {
         print(go.name);
     }
 
-    private void moveBody(Rigidbody rig)
+    private void moveBody()
     {
         // Z axis
         if (Input.GetKeyDown("q"))
         {
-            rig.AddForce(transform.forward * force, ForceMode.Impulse);
+            transform.Translate(0, 0, force);
         }
-        if (Input.GetKeyDown("a"))
+        if (Input.GetKeyDown("e"))
         {
-            rig.AddForce(-transform.forward * force, ForceMode.Impulse);
+            transform.Translate(0, 0, -force);
         }
 
         // Y axis
         if (Input.GetKeyDown("w"))
         {
-            rig.AddForce(transform.up * force, ForceMode.Impulse);
+            transform.Translate(0, force, 0);
         }
         if (Input.GetKeyDown("s"))
         {
-            rig.AddForce(-transform.up * force, ForceMode.Impulse);
+            transform.Translate(0, -force, 0);
         }
 
         // X axis
         if (Input.GetKeyDown("d"))
         {
-            rig.AddForce(transform.right * force, ForceMode.Impulse);
+            transform.Translate(force, 0, 0);
         }
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("a"))
         {
-            rig.AddForce(-transform.right * force, ForceMode.Impulse);
+            transform.Translate(-force, 0, 0);
         }
     }
 }
