@@ -517,6 +517,7 @@ GameObject:
   - component: {fileID: 670889683}
   - component: {fileID: 670889682}
   - component: {fileID: 670889686}
+  - component: {fileID: 670889687}
   m_Layer: 0
   m_Name: Falling Cube
   m_TagString: Movable
@@ -612,8 +613,22 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &670889687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670889681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce91197f463f7ab449c592ccfaed118a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 1
+  isSelected: 0
 --- !u!1 &1125458642
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,10 +701,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1201069155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce91197f463f7ab449c592ccfaed118a, type: 3}
+  m_Script: {fileID: 11500000, guid: 100601bc3869cfa49b5896ff9589612c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 50
 --- !u!4 &1266782626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9158816795004380442, guid: 1dc1604dc678635489bea55339268446,
