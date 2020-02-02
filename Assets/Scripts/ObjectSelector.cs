@@ -6,8 +6,9 @@ public class ObjectSelector : MonoBehaviour
 {
     public float force = 0.5f;
     public float upForce = 2.5f;
-    public bool isSelected = false;
+    private bool isSelected = false;
     Rigidbody rb = null;
+    Transform selected = null;
     Shader shader1;
     Shader shader2;
     Renderer rend;
@@ -34,20 +35,22 @@ public class ObjectSelector : MonoBehaviour
                     PrintName(hit.transform.gameObject);
                     if (rb = hit.transform.GetComponent<Rigidbody>())
                     {
+                        selected = hit.transform;
                         rend.material.shader = shader1;
                         rend = hit.transform.GetComponent<Renderer>();
-                        rb.isSelected = true;
+                        isSelected = true;
                     }
                     else
                     {
+                        selected = null;
                         rend.material.shader = shader1;
-                        rb.isSelected = false;
+                        isSelected = false;
                     }
                 }
             }
         }
 
-        if (rb.isSelected)
+        if (rb == selected.GetComponent<Rigidbody>() && isSelected)
         {
             rend.material.shader = shader2;
             moveBody(rb);
