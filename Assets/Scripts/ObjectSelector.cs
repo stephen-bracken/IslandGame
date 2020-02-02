@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class ObjectSelector : MonoBehaviour
 {
-    public float force = 0.5f;
-    public float upForce = 2.5f;
+    Rigidbody rb;
+    Renderer rend;
+
+    GameObject selected;
     public bool isSelected = false;
-    Rigidbody rb = null;
-    Transform selected = null;
+
     Shader shader1;
     Shader shader2;
-    Renderer rend;
 
     void Start()
     {
-        rend = GetComponent<Renderer>();
-
         shader1 = Shader.Find("Universal Render Pipeline/Lit");
         shader2 = Shader.Find("Shader Graphs/Glow");
     }
@@ -32,112 +30,58 @@ public class ObjectSelector : MonoBehaviour
             {
                 if (hit.transform != null)
                 {
+                    reset();
+
                     PrintName(hit.transform.gameObject);
+
                     if (rb = hit.transform.GetComponent<Rigidbody>())
                     {
-                        selected = hit.transform;
-                        rend.material.shader = shader1;
-                        rend = hit.transform.GetComponent<Renderer>();
                         isSelected = true;
-                    }
-                    else
-                    {
-                        selected = null;
-                        rend.material.shader = shader1;
-                        isSelected = false;
+                        selected = hit.transform.gameObject;
+                        rend = selected.GetComponent<Renderer>();
                     }
                 }
             }
         }
 
-        if (rb == selected.GetComponent<Rigidbody>() && isSelected)
+        if (selected && isSelected)
         {
             rend.material.shader = shader2;
-            moveBody(rb);
+            MoveBody MoveBody = selected.GetComponent<MoveBody>();
+            MoveBody.enabled = true;
+        }
+        else if (selected)
+        {
+            rend.material.shader = shader1;
+            MoveBody MoveBody = selected.GetComponent<MoveBody>();
+            MoveBody.enabled = false;
+            isSelected = false;
         }
         else
         {
             rend.material.shader = shader1;
+            selected = null;
+            rend = null;
         }
     }
 
+    public void reset()
+    {
+        if (selected)
+        {
+            rend.material.shader = shader1;
+            MoveBody MoveBody = selected.GetComponent<MoveBody>();
+            MoveBody.enabled = false;
+        }
+
+        isSelected = false;
+        selected = null;
+        rend = null;
+    }
 
     private void PrintName(GameObject go)
     {
         print(go.name);
     }
 
-    
-    private void moveBody(Rigidbody rb)
-    {
-        // Z axis
-        if (Input.GetKeyDown("q"))
-        {
-            rb.transform.Translate(0, 0, force);
-        }
-        if (Input.GetKeyDown("e"))
-        {
-            rb.transform.Translate(0, 0, -force);
-        }
-
-        // Y axis
-        if (Input.GetKeyDown("w"))
-        {
-            rb.transform.Translate(0, upForce, 0);
-        }
-        //if (Input.GetKeyDown("s"))
-        //{
-        //    rb.transform.Translate(0, -force, 0);
-        //}
-
-        // X axis
-        if (Input.GetKeyDown("d"))
-        {
-            rb.transform.Translate(force, 0, 0);
-        }
-        if (Input.GetKeyDown("a"))
-        {
-            rb.transform.Translate(-force, 0, 0);
-        }
-    }
-
-    /*
-    private void moveBody(Rigidbody rb)
-    {
-        float moveX = 0.0f;
-        float moveY = 0.0f;
-        float moveZ = 0.0f;
-
-        // X axis
-        if (Input.GetKeyDown("d"))
-        {
-            moveX += force;
-        }
-        if (Input.GetKeyDown("a"))
-        {
-            moveX -= force;
-        }
-
-        // Y axis
-        if (Input.GetKeyDown("w"))
-        {
-            moveY += upForce;
-        }
-        //if (Input.GetKeyDown("s"))
-        //{
-        //    moveY -= upForce;
-        //}
-
-        // Z axis
-        if (Input.GetKeyDown("q"))
-        {
-            moveZ += force;
-        }
-        if (Input.GetKeyDown("e"))
-        {
-            moveZ -= force;
-        }
-
-        rb.MovePosition(new Vector3 (moveX, moveY, moveZ) + rb.transform.position);
-    }*/
 }

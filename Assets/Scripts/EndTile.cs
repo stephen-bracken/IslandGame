@@ -16,10 +16,11 @@ public class EndTile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Renderer render = GetComponent<Renderer>();
-        render.material.color = Color.green;
+        //Renderer render = GetComponent<Renderer>();
+        //render.material.color = Color.green;
 
-        other.gameObject.GetComponent<ObjectSelector>().isSelected = false;
+        //other.GetComponent<MoveBody>().enabled = false;
+        Camera.main.GetComponent<ObjectSelector>().reset();
 
         if (!moved)
         {

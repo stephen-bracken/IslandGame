@@ -89,8 +89,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1145651040260572852}
   m_Layer: 0
-  m_Name: bridge
-  m_TagString: Untagged
+  m_Name: Thicc Bridge
+  m_TagString: Level1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4160607344266261671}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1, z: 13.5}
+  m_LocalPosition: {x: 0, y: -0.1, z: 38.5}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.35}
   m_Children:
   - {fileID: 3489929483570813316}
@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 3489929483570813316}
   - component: {fileID: 4533460312596746396}
   - component: {fileID: 4758044418673131802}
+  - component: {fileID: 7875848857556702567}
   m_Layer: 0
   m_Name: bridge_base
   m_TagString: Untagged
@@ -136,13 +137,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7823746447847311339}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 11.1, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 11.1, z: 0}
   m_LocalScale: {x: 5, y: 25, z: 1}
   m_Children: []
   m_Father: {fileID: 1145651040260572852}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &4533460312596746396
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -190,3 +191,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &7875848857556702567
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7823746447847311339}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.9999996, z: 1.9999996}
+  m_Center: {x: 0, y: 0, z: 0}
