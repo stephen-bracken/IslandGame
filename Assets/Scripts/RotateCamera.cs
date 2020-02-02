@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class RotateCamera : MonoBehaviour
 {
-    private Vector3 Point = Vector3.zero;
-    public Vector3 Axis = Vector3.up;
+    public Vector3 Point = Vector3.zero;
+    public bool isMoving = false;
+    private Vector3 Axis = Vector3.up;
     // Update is called once per frame
     void Update()
     {

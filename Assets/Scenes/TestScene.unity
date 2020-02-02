@@ -1559,7 +1559,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toMove: {fileID: 5006512736866483171}
   moveX: 0
-  moveZ: -25
+  moveZ: 25
+  cameraSpeed: 0.02
 --- !u!1 &1002696639
 GameObject:
   m_ObjectHideFlags: 0
@@ -3135,7 +3136,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-13368
+  m_Name: pb_Mesh-4274
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

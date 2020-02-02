@@ -6,7 +6,7 @@ public class ObjectSelector : MonoBehaviour
 {
     public float force = 0.5f;
     public float upForce = 2.5f;
-    private bool isSelected = false;
+    public bool isSelected = false;
     Rigidbody rb = null;
     Transform selected = null;
     Shader shader1;
