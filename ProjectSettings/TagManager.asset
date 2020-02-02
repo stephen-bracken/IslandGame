@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Lights
   - Movable
+  - Level1
   layers:
   - Default
   - TransparentFX
